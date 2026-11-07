@@ -36,8 +36,8 @@ java -cp out System
 Features you haven't built yet but plan to (pull these from your
 "Schedule" quadrant in the Eisenhower Matrix).
 
-- [ ] Course.java function without compile error or logic error. Build the first Course object CS 180.
-- [ ] Build multi courses in System.java and build a prerequisite system.
+- [X] Course.java function without compile error or logic error. Build the first Course object CS 180.
+- [X] Build multi courses in System.java and build a prerequisite system.
 - [ ] Include basic information retrieved from Purdue website about the courses.
 - [ ] Build a function that finds the shortest path to reach a course from CS 180.
 - [ ] Clickable JFrame map of courses

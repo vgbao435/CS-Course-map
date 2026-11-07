@@ -1,5 +1,7 @@
 package CS193.src;
 
+import java.io.*;
+
 public class Course {
     // Store name of Course
     private String courseCode;
@@ -41,10 +43,47 @@ public class Course {
             }
         }
 
+        String information = "";
+
+        java.lang.System.out.println(new java.io.File("course.csv").getAbsolutePath());
+
+        try {
+            // Change your path in the pathfile below
+            BufferedReader br = new BufferedReader(
+                    new FileReader("/Users/vugiabao/Developer/Code/python-project/CS193/course.csv"));
+            String line = "";
+
+            while ((line = br.readLine()) != null) {
+                if (line.equals(courseCode)) {
+
+                    line = br.readLine();
+
+                    String[] words = line.split(" ");
+                    int count = 0;
+
+                    for (int i = 0; i < words.length; i++) {
+                        if (count < 15) {
+                            information += words[i] + " ";
+                            count++;
+                        } else {
+                            information += words[i] + "\n";
+                            count = 0;
+                        }
+                    }
+                }
+            }
+
+            br.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return ("⋆.˚ ─────────୨ৎ──────── ⋆.˚" + "\n"
                 + "Course: " + courseCode + "\n"
                 + "Content: " + courseName + "\n"
                 + "Number of credit hours: " + credit + "\n"
+                + "Information: " + information + "\n"
                 + "List of prerequisites: " + listPrerequisite);
     }
 }
