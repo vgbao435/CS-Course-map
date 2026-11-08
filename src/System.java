@@ -231,6 +231,10 @@ public class System {
          */
         listCourses.add(new Course("CS314", "Numerical Methods", 3,
                 new Course[] { listCourses.get(0) }));
+        /**
+         * Course #45
+         */
+        listCourses.add(new Course("CS361", "Great Issues In Computer Science", 3, null));
 
         // _____________________________ Information _______________________________//
 
