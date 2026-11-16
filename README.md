@@ -38,7 +38,8 @@ Features you haven't built yet but plan to (pull these from your
 
 - [X] Course.java function without compile error or logic error. Build the first Course object CS 180.
 - [X] Build multi courses in System.java and build a prerequisite system.
-- [ ] Include basic information retrieved from Purdue website about the courses.
+- [X] Include basic information retrieved from Purdue website about the courses.
+- [X] Include different information about difference CS concentrations.
 - [ ] Build a function that finds the shortest path to reach a course from CS 180.
 - [ ] Clickable JFrame map of courses
 - [ ] Add MATH and STAT courses, beside CS courses
