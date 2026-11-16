@@ -3,7 +3,8 @@ package CS193.src;
 import java.io.*;
 
 public class Course {
-    // Store name of Course
+    // Store name of Course, including a course code, a course name, the number of
+    // credit and the list of prerequisite
     private String courseCode;
     private String courseName;
     private int credit;
@@ -33,6 +34,10 @@ public class Course {
         return prerequisite;
     }
 
+    public void setPrerequisite(Course[] prerequisite) {
+        this.prerequisite = prerequisite;
+    }
+
     @Override
     public String toString() {
         String listPrerequisite = "";
@@ -44,8 +49,6 @@ public class Course {
         }
 
         String information = "";
-
-        java.lang.System.out.println(new java.io.File("course.csv").getAbsolutePath());
 
         try {
             // Change your path in the pathfile below
