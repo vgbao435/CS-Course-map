@@ -40,9 +40,9 @@ Features you haven't built yet but plan to (pull these from your
 - [X] Build multi courses in System.java and build a prerequisite system.
 - [X] Include basic information retrieved from Purdue website about the courses.
 - [X] Include different information about difference CS concentrations.
-- [ ] Build a function that finds the shortest path to reach a course from CS 180.
+- [X] Build a function that finds all the courses needed to learn to reach a course.
 - [ ] Clickable JFrame map of courses
-- [ ] Add MATH and STAT courses, beside CS courses
+- [X] Add MATH and STAT courses, beside CS courses
 - [ ] Improve the User Interface, starting to look for new utilities for version 3.0
 
 

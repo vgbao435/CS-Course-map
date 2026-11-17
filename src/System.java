@@ -558,8 +558,8 @@ public class System {
                 IO.println("What do you want to find information about?\n"
                                 + "To find information about courses, type in 1\n"
                                 + "To find information about different CS tracks, type in 2\n"
-                                + "To view the courses in a map, type in 3\n"
-                                + "To find the courses you need to take, type in 4\n"
+                                + "To find the courses you need to take, type in 3\n"
+                                + "To view the courses in a map, type in 4\n"
                                 + "To exit, type in \"Exit\"\n");
                 String request = IO.readln("What do you want to find information about? ");
                 IO.println("\n");
@@ -589,7 +589,7 @@ public class System {
                                 }
 
                         } else if (request.equals("2")) {
-                                IO.println("To find information about Purdue CS tracks, type in below the course code. The course code should be one of the following\n"
+                                IO.println("To find information about Purdue CS tracks, type in below the track code. The track code should be one of the following\n"
                                                 + "SWE, SSW, Security, MI, PL, DBIS, CSE, CGV, FCS\n"
                                                 + "To exit this mode, type in \"Exit mode\"");
 
@@ -604,7 +604,20 @@ public class System {
                                 }
 
                         } else if (request.equals("3")) {
+                                IO.println("To find the courses you need to take prior to a specific course, type in below the course code.\n"
+                                                + "The course code should be in the form CS###\n"
+                                                + "if the course has two ending 0s, and CS##### if the course does not have two ending 0s\n"
+                                                + "To exit this mode, type in \"Exit mode\"");
 
+                                String input = IO.readln("What course do you want to search? ");
+                                IO.println("\n");
+
+                                while (!input.equals("Exit mode")) {
+                                        IO.println(reform(getAllCourse(input)));
+                                        IO.println("\n");
+                                        input = IO.readln("What course do you want to search? ");
+                                        IO.println("\n");
+                                }
                         } else if (request.equals("4")) {
 
                         }
@@ -662,7 +675,29 @@ public class System {
 
         // This method find all the CS classes need to take. If none, return null.
         public String getAllCourse(String courseCode) {
-                return null;
+
+                int coursePosition = -1;
+                String courses = "";
+
+                for (int i = 0; i < listCourses.size(); i++) {
+                        if (listCourses.get(i).getCourseCode().equals(courseCode)) {
+                                coursePosition = i;
+                                break;
+                        }
+                }
+
+                if (coursePosition == -1) {
+                        return "No such course existed";
+                } else if (listCourses.get(coursePosition).getPrerequisite() == null) {
+                        return "";
+                } else {
+                        for (int i = 0; i < listCourses.get(coursePosition).getPrerequisite().length; i++) {
+                                String coursesCodeTemp = listCourses.get(coursePosition).getPrerequisite()[i]
+                                                .getCourseCode();
+                                courses += coursesCodeTemp + "," + getAllCourse(coursesCodeTemp);
+                        }
+                        return removeDuplicate(courses);
+                }
         }
 
         public String removeDuplicate(String listCourseCode) {
@@ -674,7 +709,20 @@ public class System {
                                 continue;
                         } else {
                                 read.add(input[i]);
-                                output += input[i] + ", ";
+                                output += input[i] + ",";
+                        }
+                }
+                return output;
+        }
+
+        public String reform(String input) {
+                String[] listWord = input.split(",");
+                String output = "";
+                for (int i = 0; i < listWord.length; i++) {
+                        if (i != listWord.length - 1) {
+                                output += listWord[i] + " | ";
+                        } else {
+                                output += listWord[i];
                         }
                 }
                 return output;
